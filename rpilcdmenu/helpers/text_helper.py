@@ -14,7 +14,7 @@ def get_scrolled_line(text, line_number=0):
 
         char_index += 1
 
-        if char_index == 16 or char == '\n':
+        if char_index == 20 or char == '\n':
             if line_index == line_number:
                 return scrolled_text
             char_index = 0

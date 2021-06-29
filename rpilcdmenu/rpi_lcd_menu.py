@@ -38,7 +38,7 @@ class RpiLCDMenu(BaseMenu):
                 self.lcd.write4bits(ord(char), True)
                 i = i + 1
 
-            if i == 16:
+            if i == 20:
                 self.lcd.write4bits(0xC0)  # last char of the line
             elif lines == 2:
                 break
