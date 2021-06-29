@@ -17,7 +17,7 @@ URL = 'http://raspberrypi:8887/api/devices/adalight/effects'
 with open('effects.json') as json_file:
     effects = json.load(json_file)
 
-with open('effects.json') as json_file:
+with open('effects_non_reactive.json') as json_file:
     effects_non_reactive = json.load(json_file)
 
 def main():
@@ -29,12 +29,12 @@ def main():
     for effect in effects:
         function_item = FunctionItem(f"{effect['name'][:20]}\n{effect['subname'][:19]}".upper(), send_effect, [effect['body']])
         submenu.append_item(function_item)
-    # submenu = RpiLCDSubMenu(menu)
-    # submenu_item = SubmenuItem("NON REACTIVE", submenu, menu)
-    # menu.append_item(submenu_item)
-    # for effect in effects_non_reactive:
-    #     function_item = FunctionItem(f"{effect['name'][:20]}\n{effect['subname'][:19]}".upper(), send_effect, [effect['body']])
-    #     submenu.append_item(function_item)
+    submenu2 = RpiLCDSubMenu(menu)
+    submenu_item2 = SubmenuItem("NON REACTIVE", submenu2, menu)
+    menu.append_item(submenu_item2)
+    for effect in effects_non_reactive:
+        function_item = FunctionItem(f"{effect['name'][:20]}\n{effect['subname'][:19]}".upper(), send_effect, [effect['body']])
+        submenu2.append_item(function_item)
 
     # function_item1 = FunctionItem("Item 1\nDupa", fooFunction, [1])
     # function_item2 = FunctionItem("Item 2", fooFunction, [2])
