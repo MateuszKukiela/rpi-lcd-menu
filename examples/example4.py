@@ -80,6 +80,7 @@ def main():
 
 
 def send_effect(body):
+    print(body)
     requests.post(URL, json=body)
 
 def fooFunction(item_index):
