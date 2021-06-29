@@ -81,7 +81,8 @@ def main():
 
 def send_effect(body):
     print(body)
-    requests.post(URL, json=body)
+    r = requests.post(URL, json=body)
+    print(r.text)
 
 def fooFunction(item_index):
     """
