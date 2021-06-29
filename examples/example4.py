@@ -51,6 +51,11 @@ def main():
         menu = menu.processEnter()
         print("Switch pressed")
 
+    def sw_long():
+        global menu
+        menu = menu.submenu.exit()
+        print("Switch long pressed")
+
     def up_callback(counter):
         global menu
         if my_rotary.counter > len(menu.items):
@@ -76,7 +81,7 @@ def main():
         up_callback=up_callback,
         down_callback=down_callback,
     )
-    my_rotary.setup_switch(sw_short_callback=sw_short)
+    my_rotary.setup_switch(sw_short_callback=sw_short, sw_long_callback=sw_long)
     my_rotary.counter = 1
 
     while True:
