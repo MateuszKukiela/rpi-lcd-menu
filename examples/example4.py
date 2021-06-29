@@ -11,9 +11,6 @@ import time
 from pigpio_encoder.rotary import Rotary
 
 
-
-
-
 def main():
     # configure standard button
     GPIO.setmode(GPIO.BCM)
@@ -21,6 +18,7 @@ def main():
     prev_button = 0
 
     # create menu as in example3
+    global menu
     menu = RpiLCDMenu(4, 17, [18, 22, 23, 24])
 
     function_item1 = FunctionItem("Item 1", fooFunction, [1])
@@ -43,15 +41,18 @@ def main():
         print("Counter value: ", counter)
 
     def sw_short():
+        global menu
         menu.processEnter()
         print("Switch pressed")
 
     def up_callback(counter):
+        global menu
         menu.processDown()
         print("Up rotation")
 
     def down_callback(counter):
-        menu.processUp()
+        global menu
+        menu = menu.processUp()
         print("Down rotation")
 
     my_rotary = Rotary(clk_gpio=5,
