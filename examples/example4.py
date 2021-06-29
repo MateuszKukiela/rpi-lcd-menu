@@ -20,6 +20,10 @@ with open('effects.json') as json_file:
 with open('effects_non_reactive.json') as json_file:
     effects_non_reactive = json.load(json_file)
 
+with open('effects_reactive.json') as json_file:
+    effects_reactive = json.load(json_file)
+
+
 def main():
     global menu
     menu = RpiLCDMenu(4, 17, [18, 22, 23, 24])
@@ -29,12 +33,20 @@ def main():
     for effect in effects:
         function_item = FunctionItem(f"{effect['name'][:20]}\n{effect['subname'][:19]}".upper(), send_effect, [effect['body']])
         submenu.append_item(function_item)
+
     submenu2 = RpiLCDSubMenu(menu)
     submenu_item2 = SubmenuItem("NON REACTIVE", submenu2, menu)
     menu.append_item(submenu_item2)
     for effect in effects_non_reactive:
         function_item = FunctionItem(f"{effect['name'][:20]}\n{effect['subname'][:19]}".upper(), send_effect, [effect['body']])
         submenu2.append_item(function_item)
+
+    submenu3 = RpiLCDSubMenu(menu)
+    submenu_item3 = SubmenuItem("REACTIVE", submenu3, menu)
+    menu.append_item(submenu_item3)
+    for effect in effects_reactive:
+        function_item = FunctionItem(f"{effect['name'][:20]}\n{effect['subname'][:19]}".upper(), send_effect, [effect['body']])
+        submenu3.append_item(function_item)
 
     # function_item1 = FunctionItem("Item 1\nDupa", fooFunction, [1])
     # function_item2 = FunctionItem("Item 2", fooFunction, [2])
