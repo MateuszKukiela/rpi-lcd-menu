@@ -29,7 +29,7 @@ def main():
     global menu
     menu = RpiLCDMenu(4, 17, [18, 22, 23, 24])
     for effect in effects:
-        function_item = FunctionItem(f"{effect['name'][:5]}\n{effect['subname'][:5]}", send_effect, [effect['body']])
+        function_item = FunctionItem(f"{effect['name'][:20]}\n{effect['subname'][:20]}", send_effect, [effect['body']])
         menu.append_item(function_item)
     # function_item1 = FunctionItem("Item 1\nDupa", fooFunction, [1])
     # function_item2 = FunctionItem("Item 2", fooFunction, [2])
@@ -80,9 +80,7 @@ def main():
 
 
 def send_effect(body):
-    print(body)
-    r = requests.post(URL, json=body)
-    print(r.text)
+    requests.post(URL, json=body)
 
 def fooFunction(item_index):
     """
