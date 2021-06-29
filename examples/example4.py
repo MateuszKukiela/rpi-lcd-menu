@@ -7,7 +7,6 @@ multi level menu with physical steering
 from rpilcdmenu import *
 from rpilcdmenu.items import *
 import RPi.GPIO as GPIO
-import smbus
 import time
 from pigpio_encoder.rotary import Rotary
 
