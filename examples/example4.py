@@ -21,8 +21,6 @@ with open('effects.json') as json_file:
 def main():
     global menu
     menu = RpiLCDMenu(4, 17, [18, 22, 23, 24])
-    global master_menu
-    master_menu = menu
     submenu = RpiLCDSubMenu(menu)
     submenu_item = SubmenuItem("ALL EFFECTS", submenu, menu)
     menu.append_item(submenu_item)
@@ -56,8 +54,7 @@ def main():
 
     def sw_long():
         global menu
-        global master_menu
-        if issubclass(menu, master_menu):
+        if isinstance(menu, RpiLCDSubMenu):
             menu = menu.exit()
         print("Switch long pressed")
 
