@@ -81,7 +81,7 @@ def main():
         up_callback=up_callback,
         down_callback=down_callback,
     )
-    my_rotary.setup_switch(sw_short_callback=sw_short, sw_long_callback=sw_long)
+    my_rotary.setup_switch(long_press=True, sw_short_callback=sw_short, sw_long_callback=sw_long)
     my_rotary.counter = 1
 
     while True:
