@@ -48,6 +48,8 @@ def main():
         function_item = FunctionItem(f"{effect['name'][:20]}\n{effect['subname'][:19]}".upper(), send_effect, [effect['body']])
         submenu3.append_item(function_item)
 
+    function_item = FunctionItem(f"{effects[0]['name'][:20]}\n{effects[0]['subname'][:19]}".upper(), send_effect, [effects[0]['body']])
+    menu.append_item(function_item)
     # function_item1 = FunctionItem("Item 1\nDupa", fooFunction, [1])
     # function_item2 = FunctionItem("Item 2", fooFunction, [2])
     # menu.append_item(function_item1).append_item(function_item2)
