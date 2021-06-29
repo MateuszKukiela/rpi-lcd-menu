@@ -18,7 +18,7 @@ def main():
     prev_button = 0
 
     # create menu as in example3
-    menu = RpiLCDMenu(26, 19, [13, 6, 5, 21])
+    menu = RpiLCDMenu(4, 17, [18, 22, 23, 24])
 
     menu.append_item(
         MessageItem('message item',
