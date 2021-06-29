@@ -65,7 +65,7 @@ def main():
     my_rotary.setup_switch(sw_short_callback=sw_short)
 
     while True:
-        time.sleep(0.01)
+        time.sleep(0.001)
 
 
 def fooFunction(item_index):
