@@ -54,7 +54,7 @@ def main():
 
     def sw_long():
         global menu
-        menu = menu.submenu.exit()
+        menu = menu.exit()
         print("Switch long pressed")
 
     def up_callback(counter):
