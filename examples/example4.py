@@ -21,9 +21,12 @@ with open('effects.json') as json_file:
 def main():
     global menu
     menu = RpiLCDMenu(4, 17, [18, 22, 23, 24])
+    submenu = RpiLCDSubMenu(menu)
+    submenu_item = SubmenuItem("ALL EFFECTS", submenu, menu)
+    menu.append_item(submenu_item)
     for effect in effects:
-        function_item = FunctionItem(f"{effect['name'][:20]}\n{effect['subname'][:19]}", send_effect, [effect['body']])
-        menu.append_item(function_item)
+        function_item = FunctionItem(f"{effect['name'][:20]}\n{effect['subname'][:19]}".upper(), send_effect, [effect['body']])
+        submenu.append_item(function_item)
     # function_item1 = FunctionItem("Item 1\nDupa", fooFunction, [1])
     # function_item2 = FunctionItem("Item 2", fooFunction, [2])
     # menu.append_item(function_item1).append_item(function_item2)
