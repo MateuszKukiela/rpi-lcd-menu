@@ -6,7 +6,6 @@ multi level menu with physical steering
 
 from rpilcdmenu import *
 from rpilcdmenu.items import *
-import RPi.GPIO as GPIO
 import time
 from pigpio_encoder.rotary import Rotary
 import json
@@ -20,12 +19,6 @@ with open('effects.json') as json_file:
 
 
 def main():
-    # configure standard button
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setup(27, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-    prev_button = 0
-
-    # create menu as in example3
     global menu
     menu = RpiLCDMenu(4, 17, [18, 22, 23, 24])
     for effect in effects:
@@ -57,6 +50,7 @@ def main():
 
     def up_callback(counter):
         global menu
+        print("menus:", len(menu.items))
         menu = menu.processDown()
         print("Up rotation")
 
@@ -81,6 +75,7 @@ def main():
 
 def send_effect(body):
     requests.post(URL, json=body)
+
 
 def fooFunction(item_index):
     """
