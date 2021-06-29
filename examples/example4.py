@@ -50,7 +50,6 @@ def main():
 
     def up_callback(counter):
         global menu
-        print(my_rotary.counter)
         if my_rotary.counter > len(menu.items)-1:
             my_rotary.counter = len(menu.items) - 1
         else:
@@ -59,6 +58,8 @@ def main():
         print("Up rotation")
 
     def down_callback(counter):
+        print(my_rotary.counter)
+
         global menu
         if my_rotary.counter < 0:
             my_rotary.counter = 0
