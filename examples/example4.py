@@ -69,7 +69,8 @@ def main():
 
     def sw_short():
         global menu
-        my_rotary.counter = 1
+        if isinstance(menu, RpiLCDMenu):
+            my_rotary.counter = 1
         menu = menu.processEnter()
         print("Switch pressed")
 
