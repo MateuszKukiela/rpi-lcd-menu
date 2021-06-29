@@ -46,11 +46,11 @@ def main():
         menu.processEnter()
         print("Switch pressed")
 
-    def up_callback():
+    def up_callback(counter):
         menu.processUp()
         print("Up rotation")
 
-    def down_callback():
+    def down_callback(counter):
         menu.processDown()
         print("Down rotation")
 
