@@ -25,6 +25,7 @@ def main():
     submenu_item = SubmenuItem("ALL EFFECTS", submenu, menu)
     menu.append_item(submenu_item)
     for effect in effects:
+        submenu.append_item(FunctionItem("Back\n", exitSubMenu, [submenu]))
         function_item = FunctionItem(f"{effect['name'][:20]}\n{effect['subname'][:19]}".upper(), send_effect, [effect['body']])
         submenu.append_item(function_item)
     # function_item1 = FunctionItem("Item 1\nDupa", fooFunction, [1])
