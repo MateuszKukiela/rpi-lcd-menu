@@ -42,12 +42,12 @@ def main():
 
     def sw_short():
         global menu
-        menu.processEnter()
+        menu = menu.processEnter()
         print("Switch pressed")
 
     def up_callback(counter):
         global menu
-        menu.processDown()
+        menu = menu.processDown()
         print("Up rotation")
 
     def down_callback(counter):
