@@ -30,7 +30,7 @@ def main():
         function_item = FunctionItem(f"{effect['name'][:20]}\n{effect['subname'][:19]}".upper(), send_effect, [effect['body']])
         submenu.append_item(function_item)
     submenu = RpiLCDSubMenu(menu)
-    submenu_item = SubmenuItem("NON REACTIVE\nEFFECTS", submenu, menu)
+    submenu_item = SubmenuItem("NON REACTIVE", submenu, menu)
     menu.append_item(submenu_item)
     for effect in effects_non_reactive:
         function_item = FunctionItem(f"{effect['name'][:20]}\n{effect['subname'][:19]}".upper(), send_effect, [effect['body']])
