@@ -21,7 +21,7 @@ def main():
     global menu
     menu = RpiLCDMenu(4, 17, [18, 22, 23, 24])
 
-    function_item1 = FunctionItem("Item 1", fooFunction, [1])
+    function_item1 = FunctionItem("Item 1\xDFC\nDupa", fooFunction, [1])
     function_item2 = FunctionItem("Item 2", fooFunction, [2])
     menu.append_item(function_item1).append_item(function_item2)
 
