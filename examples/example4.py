@@ -9,6 +9,14 @@ from rpilcdmenu.items import *
 import RPi.GPIO as GPIO
 import time
 from pigpio_encoder.rotary import Rotary
+import json
+import requests
+
+
+URL = 'http://raspberrypi:8887/api/devices/adalight/effects'
+
+with open('effects.json') as json_file:
+    effects = json.load(json_file)
 
 
 def main():
@@ -20,20 +28,22 @@ def main():
     # create menu as in example3
     global menu
     menu = RpiLCDMenu(4, 17, [18, 22, 23, 24])
+    for effect in effects:
+        function_item = FunctionItem(f"{effect['name']}\n{effect['subname']}", send_effect, [effect['body']])
+        menu.append_item(function_item)
+    # function_item1 = FunctionItem("Item 1\nDupa", fooFunction, [1])
+    # function_item2 = FunctionItem("Item 2", fooFunction, [2])
+    # menu.append_item(function_item1).append_item(function_item2)
 
-    function_item1 = FunctionItem("Item 1\nDupa", fooFunction, [1])
-    function_item2 = FunctionItem("Item 2", fooFunction, [2])
-    menu.append_item(function_item1).append_item(function_item2)
-
-    submenu = RpiLCDSubMenu(menu)
-    submenu_item = SubmenuItem("SubMenu (3)", submenu, menu)
-    menu.append_item(submenu_item)
-
-    submenu.append_item(FunctionItem("Item 31", fooFunction, [31])).append_item(
-        FunctionItem("Item 32", fooFunction, [32]))
-    submenu.append_item(FunctionItem("Back", exitSubMenu, [submenu]))
-
-    menu.append_item(FunctionItem("Item 4", fooFunction, [4]))
+    # submenu = RpiLCDSubMenu(menu)
+    # submenu_item = SubmenuItem("SubMenu (3)", submenu, menu)
+    # menu.append_item(submenu_item)
+    #
+    # submenu.append_item(FunctionItem("Item 31", fooFunction, [31])).append_item(
+    #     FunctionItem("Item 32", fooFunction, [32]))
+    # submenu.append_item(FunctionItem("Back", exitSubMenu, [submenu]))
+    #
+    # menu.append_item(FunctionItem("Item 4", fooFunction, [4]))
 
     menu.start()
 
@@ -68,6 +78,9 @@ def main():
     while True:
         time.sleep(0.001)
 
+
+def send_effect(body):
+    requests.post(URL, json=body)
 
 def fooFunction(item_index):
     """
