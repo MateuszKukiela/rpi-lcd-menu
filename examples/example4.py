@@ -50,6 +50,7 @@ def main():
 
     def up_callback(counter):
         global menu
+        print(my_rotary.counter)
         if my_rotary.counter > len(menu.items)-1:
             my_rotary.counter = len(menu.items) - 1
         else:
