@@ -47,11 +47,11 @@ def main():
         print("Switch pressed")
 
     def up_callback(counter):
-        menu.processUp()
+        menu.processDown()
         print("Up rotation")
 
     def down_callback(counter):
-        menu.processDown()
+        menu.processUp()
         print("Down rotation")
 
     my_rotary = Rotary(clk_gpio=5,
